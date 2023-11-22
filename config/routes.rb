@@ -6,5 +6,21 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+
+  # get 'restaurants', to: 'restaurants#index'
+  # post 'restaurants', to: 'restaurants#create'
+  # get 'restaurants/new', to: 'restaurants#new', as: :new_restaurant
+  # get 'restaurants/:id', to: 'restaurants#show', as: :restaurant
+  # # get 'restaurants/:id/edit', to: 'restaurants#edit', as: :edit_restaurant
+  # # patch 'restaurants/:id', to: 'restaurants#update'
+  # # delete 'restaurants/:id', to: 'restaurants#destroy'
+
+  # post 'reviews', to: 'reviews#create'
+  # get 'reviews/new', to: 'reviews#new', as: :new_review
+
+
+  resources :restaurants, only: [:index, :show, :new, :create,]do # génère les 7 routes du crud
+    resources :reviews, only: [:new, :create,]
+  end
 end
+  #resources :reviews, only: :destroy # DELETE reviews/:id
